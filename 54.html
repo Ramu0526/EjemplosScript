@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Resultados de Exámenes</title>
+</head>
+<body>
+    <script>
+        function solicitarNota() {
+            return parseFloat(prompt("Ingrese el resultado del examen (0-100):"));
+        }
+
+        function calcularPromedio(notas) {
+            const suma = notas.reduce((acc, nota) => acc + nota, 0);
+            return suma / notas.length;
+        }
+
+        function evaluarResultado(promedio) {
+            return promedio >= 60 ? "Aprobado" : "Reprobado";
+        }
+
+        function registrarResultados() {
+            let notas = [];
+            let continuar;
+
+            do {
+                let nota = solicitarNota();
+                if (nota >= 0 && nota <= 100) {
+                    notas.push(nota);
+                } else {
+                    alert("Nota no válida. Ingrese un valor entre 0 y 100.");
+                }
+                continuar = confirm("¿Desea ingresar otro resultado?");
+            } while (continuar);
+
+            return notas;
+        }
+
+        function mostrarResultado(notas) {
+            if (notas.length > 0) {
+                const promedio = calcularPromedio(notas);
+                const estado = evaluarResultado(promedio);
+                console.log("Promedio de resultados: " + promedio.toFixed(2));
+                console.log("Estado del estudiante: " + estado);
+            } else {
+                console.log("No se registraron notas.");
+            }
+        }
+
+        function iniciarRegistro() {
+            const resultados = registrarResultados();
+            mostrarResultado(resultados);
+        }
+
+        iniciarRegistro();
+    </script>
+</body>
+</html>

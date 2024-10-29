@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculadora Aritmética</title>
+    </head>
+
+    <body>
+        <script>
+            function solicitarOperacion() {
+                let operacion = prompt("Seleccione la operación aritmética que desea realizar: +, -, *, /");
+                return operacion;
+            }
+
+            function solicitarNumeros(operacion) {
+                let numero1, numero2;
+                switch (operacion) {
+                    case '+':
+                    case '-':
+                    case '*':
+                    case '/':
+                        numero1 = parseFloat(prompt("Ingrese el primer número:"));
+                        numero2 = parseFloat(prompt("Ingrese el segundo número:"));
+                        break;
+                    default:
+                        console.log("Operación no válida.");
+                        return null;
+                }
+                return { numero1, numero2 };
+            }
+
+            function calcularResultado(operacion, numeros) {
+                if (!numeros) return "Error: Operación no válida.";
+
+                let resultado;
+                switch (operacion) {
+                    case '+':
+                        resultado = numeros.numero1 + numeros.numero2;
+                        break;
+                    case '-':
+                        resultado = numeros.numero1 - numeros.numero2;
+                        break;
+                    case '*':
+                        resultado = numeros.numero1 * numeros.numero2;
+                        break;
+                    case '/':
+                        if (numeros.numero2 !== 0) {
+                            resultado = numeros.numero1 / numeros.numero2;
+                        } else {
+                            resultado = "Error: División por cero no permitida.";
+                        }
+                        break;
+                    default:
+                        resultado = "Operación no válida.";
+                        break;
+                }
+                return resultado;
+            }
+
+            function mostrarResultado(resultado) {
+                console.log("Resultado:", resultado);
+            }
+
+            const operacion = solicitarOperacion();
+            const numeros = solicitarNumeros(operacion);
+            const resultado = calcularResultado(operacion, numeros);
+            mostrarResultado(resultado);
+        </script>
+    </body>
+</html>

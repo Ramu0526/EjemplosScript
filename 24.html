@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sistema de Clasificación Deportiva</title>
+    </head>
+    <body>
+        <script>
+            let equipos = {
+                "Equipo A": 0,
+                "Equipo B": 0
+            };
+
+            function solicitarResultado() {
+                let resultado = prompt("Ingrese el resultado del partido (ganado, perdido, empatado):").toLowerCase();
+                return resultado;
+            }
+
+            function procesarResultado(resultado) {
+                switch (resultado) {
+                    case "ganado":
+                        equipos["Equipo A"] += 3; 
+                        equipos["Equipo B"] += 0; 
+                        break;
+                    case "perdido":
+                        equipos["Equipo A"] += 0; 
+                        equipos["Equipo B"] += 3; 
+                        break;
+                    case "empatado":
+                        equipos["Equipo A"] += 1; 
+                        equipos["Equipo B"] += 1;
+                        break;
+                    default:
+                        console.log("Resultado no válido. Por favor, ingrese 'ganado', 'perdido' o 'empatado'.");
+                        return false;
+                }
+                return true; 
+            }
+
+            function mostrarClasificacion() {
+                console.log("Clasificación Actual:");
+                for (let equipo in equipos) {
+                    console.log(`${equipo}: ${equipos[equipo]} puntos`);
+                }
+            }
+
+            let resultado = solicitarResultado();
+            if (resultado) {
+                if (procesarResultado(resultado)) {
+                    mostrarClasificacion();
+                }
+            }
+        </script>
+    </body>
+</html>

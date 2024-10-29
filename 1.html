@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Verificación Par o Impar</title>
+    </head>
+
+    <body>
+        <script>
+            function capturarNumero() {
+                let numero = parseInt(prompt("Ingrese un número para verificar si es par o impar: "));
+                return numero;
+            }
+            function verificarParidad(numero) {
+                if (numero % 2 === 0) {
+                    return "El número es par";
+                } else {
+                    return "El número es impar";
+                }
+            }
+            function imprimirResultado(mensaje) {
+                console.log(mensaje);
+            }
+            console.log("PROGRAMA DE VERIFICACIÓN DE PARIDAD");
+            let numero = capturarNumero();
+            let resultado = verificarParidad(numero);
+            imprimirResultado("El número ingresado es: " + numero);
+            imprimirResultado(resultado);
+        </script>
+    </body>
+</html>

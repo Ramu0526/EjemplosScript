@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mostrar Años Cumplidos</title>
+</head>
+<body>
+    <script>
+        function solicitarEdad() {
+            let edad = parseInt(prompt("Ingrese su edad:"));
+            return edad;
+        }
+
+        function obtenerAniosCumplidos(edad) {
+            let anios = [];
+            for (let i = 1; i <= edad; i++) {
+                anios.push(i);
+            }
+            return anios;
+        }
+
+        function imprimirAnios(anios) {
+            console.log("Años cumplidos:");
+            for (let i = 0; i < anios.length; i++) {
+                console.log(anios[i]);
+            }
+        }
+
+        let edadUsuario = solicitarEdad();
+        let aniosCumplidos = obtenerAniosCumplidos(edadUsuario);
+        imprimirAnios(aniosCumplidos);
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sensor de Temperatura con Umbral de Alerta</title>
+    </head>
+
+    <body>
+        <script>
+            function solicitarTemperatura() {
+                let temperaturaActual = parseFloat(prompt("Ingrese la temperatura actual en °C:"));
+                return temperaturaActual;
+            }
+
+            function verificarAlerta(temperatura, umbral) {
+                if (temperatura > umbral) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function mostrarAlerta() {
+                console.log("Alerta: La temperatura está por encima del umbral permitido.");
+            }
+
+            function mostrarNormal() {
+                console.log("La temperatura es normal.");
+            }
+
+            const umbralAlerta = 30; // Umbral de temperatura para la alerta en °C
+
+            let temperaturaActual = solicitarTemperatura();
+
+            if (verificarAlerta(temperaturaActual, umbralAlerta)) {
+                mostrarAlerta();
+            } else {
+                mostrarNormal();
+            }
+        </script>
+    </body>
+</html>

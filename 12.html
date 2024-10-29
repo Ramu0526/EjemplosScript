@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simulación de Factura</title>
+    </head>
+
+    <body>
+        <script>
+            function capturarDatos() {
+                let nombreCliente = prompt("Ingrese el nombre del cliente:");
+                let producto = prompt("Ingrese el producto comprado:");
+                let cantidad = parseInt(prompt("Ingrese la cantidad de productos:"));
+                let precioUnitario = parseFloat(prompt("Ingrese el precio unitario del producto:"));
+                let esEstudiante = confirm("¿El cliente es estudiante?");
+                let tipoCliente = prompt("Ingrese el tipo de cliente (A: Joven, B: Adulto, C: Anciano):");
+
+                return { nombreCliente, producto, cantidad, precioUnitario, esEstudiante, tipoCliente };
+            }
+
+            function calcularSubtotal(precioUnitario, cantidad) {
+                return precioUnitario * cantidad;
+            }
+
+            function calcularImpuesto(subtotal, esEstudiante) {
+                let tasaImpuesto = esEstudiante ? 0.05 : 0.13;
+                return subtotal * tasaImpuesto;
+            }
+
+            function calcularTotal(subtotal, impuesto) {
+                return subtotal + impuesto;
+            }
+
+            function mostrarFactura(datos) {
+                let subtotal = calcularSubtotal(datos.precioUnitario, datos.cantidad);
+                let impuesto = calcularImpuesto(subtotal, datos.esEstudiante);
+                let total = calcularTotal(subtotal, impuesto);
+
+                let tipoClienteDescripcion;
+
+                if (datos.tipoCliente.toUpperCase() === 'A') {
+                    tipoClienteDescripcion = "Joven";
+                } else if (datos.tipoCliente.toUpperCase() === 'B') {
+                    tipoClienteDescripcion = "Adulto";
+                } else if (datos.tipoCliente.toUpperCase() === 'C') {
+                    tipoClienteDescripcion = "Anciano";
+                } else {
+                    tipoClienteDescripcion = "Desconocido";
+                }
+
+                let mensajeFactura = `
+                    Factura:
+                    Nombre del cliente: ${datos.nombreCliente}
+                    Producto: ${datos.producto}
+                    Cantidad: ${datos.cantidad}
+                    Precio unitario: $${datos.precioUnitario.toFixed(2)}
+                    Subtotal: $${subtotal.toFixed(2)}
+                    Impuesto: $${impuesto.toFixed(2)}
+                    Total a pagar: $${total.toFixed(2)}
+                    Tipo de cliente: ${tipoClienteDescripcion}
+                `;
+                console.log(mensajeFactura);
+            }
+
+            let datosFactura = capturarDatos();
+            mostrarFactura(datosFactura);
+        </script>
+    </body>
+</html>

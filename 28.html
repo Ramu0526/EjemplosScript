@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calcular el Factorial de un Número</title>
+</head>
+<body>
+    <script>
+        function solicitarNumero() {
+            let numero = parseInt(prompt("Ingrese un número entero no negativo:"));
+            return numero;
+        }
+
+        function calcularFactorial(numero) {
+            if (numero < 0) {
+                return null;
+            }
+            let factorial = 1;
+            for (let i = 1; i <= numero; i++) {
+                factorial *= i;
+            }
+            return factorial;
+        }
+
+        function imprimirResultado(numero, factorial) {
+            if (factorial === null) {
+                console.log("Error: El factorial no está definido para números negativos.");
+            } else {
+                console.log("El factorial de " + numero + " es " + factorial + ".");
+            }
+        }
+
+        let numeroSolicitado = solicitarNumero();
+        let resultadoFactorial = calcularFactorial(numeroSolicitado);
+        imprimirResultado(numeroSolicitado, resultadoFactorial);
+    </script>
+</body>
+</html>

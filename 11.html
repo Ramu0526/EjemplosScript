@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cálculo de Descuento por Cantidad</title>
+    </head>
+
+    <body>
+        <script>
+            function capturarDatos() {
+                let precio = parseFloat(prompt("Ingrese el precio del producto: "));
+                let cantidad = parseInt(prompt("Ingrese la cantidad comprada: "));
+                return { precio, cantidad };
+            }
+
+            function calcularDescuento(precio, cantidad) {
+                let total = precio * cantidad;
+                let descuento = 0;
+
+                if (cantidad >= 10) {
+                    descuento = 0.10; // 10%
+                } else if (cantidad >= 5) {
+                    descuento = 0.05; // 5%
+                }
+
+                return total * (1 - descuento);
+            }
+
+            function mostrarTotal(precioFinal) {
+                console.log("Precio total a pagar: $" + precioFinal.toFixed(2));
+            }
+
+            console.log("PROGRAMA DE CÁLCULO DE DESCUENTO POR CANTIDAD");
+            let { precio, cantidad } = capturarDatos();
+            let precioFinal = calcularDescuento(precio, cantidad);
+            mostrarTotal(precioFinal);
+        </script>
+    </body>
+</html>

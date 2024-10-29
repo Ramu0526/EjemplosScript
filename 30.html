@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabla de Multiplicar del 1 al 10</title>
+</head>
+<body>
+    <script>
+        function generarTablaMultiplicar() {
+            let tablas = [];
+            for (let i = 1; i <= 10; i++) {
+                let tabla = [];
+                for (let j = 1; j <= 10; j++) {
+                    tabla.push(i * j);
+                }
+                tablas.push(tabla);
+            }
+            return tablas;
+        }
+
+        function imprimirTabla(tablas) {
+            for (let i = 0; i < tablas.length; i++) {
+                console.log("Tabla del " + (i + 1) + ":");
+                for (let j = 0; j < tablas[i].length; j++) {
+                    console.log((i + 1) + " x " + (j + 1) + " = " + tablas[i][j]);
+                }
+                console.log("");
+            }
+        }
+
+        let tablasMultiplicar = generarTablaMultiplicar();
+        imprimirTabla(tablasMultiplicar);
+    </script>
+</body>
+</html>

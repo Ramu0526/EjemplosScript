@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Vehículos en Parqueadero</title>
+</head>
+<body>
+    <script>
+        function registrarVehiculos() {
+            let numeroVehiculos = parseInt(prompt("Ingrese el número de vehículos que ingresarán al parqueadero:"));
+            let vehiculos = []; 
+
+            for (let i = 0; i < numeroVehiculos; i++) {
+                let placa = prompt("Ingrese la placa del vehículo " + (i + 1) + ":");
+                let horaIngreso = new Date().toLocaleTimeString();
+
+                let vehiculo = {
+                    placa: placa,
+                    horaIngreso: horaIngreso
+                };
+
+                vehiculos.push(vehiculo);
+            }
+
+            return vehiculos;
+        }
+
+        function imprimirResumen(vehiculos) {
+            console.log("Resumen de vehículos registrados:");
+            for (let i = 0; i < vehiculos.length; i++) {
+                console.log("Vehículo " + (i + 1) + ": Placa: " + vehiculos[i].placa + 
+                            " - Hora de ingreso: " + vehiculos[i].horaIngreso);
+            }
+        }
+
+        let vehiculosRegistrados = registrarVehiculos();
+        imprimirResumen(vehiculosRegistrados);
+    </script>
+</body>
+</html>

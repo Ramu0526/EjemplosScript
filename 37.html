@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secuencia Ascendente</title>
+</head>
+<body>
+    <script>
+        function solicitarNumero() {
+            let numero = parseInt(prompt("Ingrese un número entero positivo:"));
+            while (numero <= 0 || isNaN(numero)) {
+                numero = parseInt(prompt("Error: Debe ingresar un número entero positivo. Intente nuevamente:"));
+            }
+            return numero;
+        }
+
+        function generarSecuencia(numero) {
+            let secuencia = [];
+            let contador = 1;
+            while (contador <= numero) {
+                secuencia.push(contador);
+                contador++;
+            }
+            return secuencia;
+        }
+
+        function imprimirSecuencia(secuencia) {
+            console.log("Secuencia Ascendente: " + secuencia.join(", "));
+        }
+
+        const numeroIngresado = solicitarNumero();
+        const secuenciaGenerada = generarSecuencia(numeroIngresado);
+        imprimirSecuencia(secuenciaGenerada);
+    </script>
+</body>
+</html>

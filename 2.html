@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Verificación de Aprobación</title>
+    </head>
+
+    <body>
+        <script>
+            function capturarCalificacion() {
+                let calificacion = parseFloat(prompt("Ingrese la calificación del estudiante: "));
+                return calificacion;
+            }
+
+            function verificarAprobacion(calificacion) {
+                if (calificacion >= 60) {
+                    return "El estudiante ha aprobado.";
+                } else {
+                    return "El estudiante ha reprobado.";
+                }
+            }
+
+            function imprimirResultado(mensaje) {
+                console.log(mensaje);
+            }
+
+            console.log("PROGRAMA DE VERIFICACIÓN DE APROBACIÓN");
+            let calificacion = capturarCalificacion();
+            let resultado = verificarAprobacion(calificacion);
+            imprimirResultado("La calificación del estudiante es: " + calificacion);
+            imprimirResultado(resultado);
+        </script>
+    </body>
+</html>

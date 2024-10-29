@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensor de Temperatura</title>
+</head>
+<body>
+    <script>
+        function solicitarTemperatura() {
+            return parseFloat(prompt("Ingrese la temperatura actual en °C:"));
+        }
+
+        function verificarTemperatura(temperatura) {
+            return temperatura >= 18 && temperatura <= 25;
+        }
+
+        function iniciarSensor() {
+            let temperatura;
+
+            do {
+                temperatura = solicitarTemperatura();
+                if (!verificarTemperatura(temperatura)) {
+                    alert("Temperatura fuera del rango aceptable. Intente de nuevo.");
+                }
+            } while (!verificarTemperatura(temperatura));
+
+            console.log("Temperatura aceptable: " + temperatura + "°C");
+        }
+
+        iniciarSensor();
+    </script>
+</body>
+</html>

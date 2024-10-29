@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calcular Factorial</title>
+</head>
+<body>
+    <script>
+        function solicitarNumero() {
+            let numero = parseInt(prompt("Ingrese un número entero no negativo:"));
+            while (numero < 0 || isNaN(numero)) {
+                numero = parseInt(prompt("Error: Debe ingresar un número entero no negativo. Intente nuevamente:"));
+            }
+            return numero;
+        }
+
+        function calcularFactorial(numero) {
+            let factorial = 1;
+            let contador = 1;
+            while (contador <= numero) {
+                factorial *= contador;
+                contador++;
+            }
+            return factorial;
+        }
+
+        function imprimirResultado(factorial) {
+            console.log("El factorial es: " + factorial);
+        }
+
+        const numeroIngresado = solicitarNumero();
+        const resultadoFactorial = calcularFactorial(numeroIngresado);
+        imprimirResultado(resultadoFactorial);
+    </script>
+</body>
+</html>

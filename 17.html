@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simulación de Ascensor con Sensor de Temperatura</title>
+    </head>
+
+    <body>
+        <script>
+            function solicitarTemperatura() {
+                let temperaturaActual = parseFloat(prompt("Ingrese la temperatura actual en °C:"));
+                return temperaturaActual;
+            }
+
+            function verificarTemperatura(temperatura) {
+                let temperaturaMinima = 18;
+                let temperaturaMaxima = 25;
+
+                if (temperatura >= temperaturaMinima && temperatura <= temperaturaMaxima) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function solicitarPiso() {
+                let pisoDeseado = parseInt(prompt("Ingrese el piso al que desea ir (1-10):"));
+                return pisoDeseado;
+            }
+
+            function verificarPiso(piso) {
+                let pisoMinimo = 1;
+                let pisoMaximo = 10;
+
+                if (piso >= pisoMinimo && piso <= pisoMaximo) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function moverAscensor(piso) {
+                console.log("El ascensor se está moviendo al piso " + piso);
+            }
+
+            function mostrarMensajeTemperaturaInadecuada() {
+                console.log("La temperatura no es adecuada para mover el ascensor.");
+            }
+
+            function mostrarErrorPiso() {
+                console.log("Error: El piso ingresado no es válido. Por favor, ingrese un piso entre 1 y 10.");
+            }
+
+            let temperaturaActual = solicitarTemperatura();
+
+            if (verificarTemperatura(temperaturaActual)) {
+                let pisoDeseado = solicitarPiso();
+
+                if (verificarPiso(pisoDeseado)) {
+                    moverAscensor(pisoDeseado);
+                } else {
+                    mostrarErrorPiso();
+                }
+            } else {
+                mostrarMensajeTemperaturaInadecuada();
+            }
+        </script>
+    </body>
+</html>

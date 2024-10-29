@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menú de Opciones</title>
+</head>
+<body>
+    <script>
+        function mostrarMenu() {
+            return parseInt(prompt("Seleccione una opción:\n1. Opción 1\n2. Opción 2\n3. Opción 3\n4. Salir"));
+        }
+
+        function procesarOpcion(opcion) {
+            switch (opcion) {
+                case 1:
+                    console.log("Ha seleccionado la Opción 1.");
+                    break;
+                case 2:
+                    console.log("Ha seleccionado la Opción 2.");
+                    break;
+                case 3:
+                    console.log("Ha seleccionado la Opción 3.");
+                    break;
+                case 4:
+                    console.log("Saliendo del programa...");
+                    return false;
+                default:
+                    console.log("Opción no válida. Intente de nuevo.");
+            }
+            return true;
+        }
+
+        function ejecutarMenu() {
+            let continuar;
+
+            do {
+                const opcion = mostrarMenu();
+                continuar = procesarOpcion(opcion);
+            } while (continuar);
+        }
+
+        ejecutarMenu();
+    </script>
+</body>
+</html>

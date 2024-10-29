@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Ventas</title>
+</head>
+<body>
+    <script>
+        function solicitarProducto() {
+            let nombre = prompt("Ingrese el nombre del producto vendido:");
+            let precio = parseFloat(prompt("Ingrese el precio del producto:"));
+            return { nombre, precio };
+        }
+
+        function registrarVentas() {
+            let totalVentas = 0;
+            let resumenVentas = "";
+            let continuar;
+
+            do {
+                let venta = solicitarProducto();
+                if (venta.precio >= 0) {
+                    totalVentas += venta.precio;
+                    resumenVentas += `Producto: ${venta.nombre}, Precio: $${venta.precio.toFixed(2)}\n`;
+                } else {
+                    alert("El precio no puede ser negativo. Intente de nuevo.");
+                }
+                continuar = confirm("¿Desea registrar otra venta?");
+            } while (continuar);
+
+            return { totalVentas, resumenVentas };
+        }
+
+        function mostrarResumen(ventas) {
+            console.log("Resumen de Ventas:");
+            console.log(ventas.resumenVentas);
+            console.log("Monto Total de Ventas: $" + ventas.totalVentas.toFixed(2));
+        }
+
+        function iniciarRegistroVentas() {
+            const ventas = registrarVentas();
+            mostrarResumen(ventas);
+        }
+
+        iniciarRegistroVentas();
+    </script>
+</body>
+</html>

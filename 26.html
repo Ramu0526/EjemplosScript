@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Imprimir Números del Cero al Solicitado</title>
+</head>
+<body>
+    <script>
+        function solicitarNumero() {
+            let numero = parseInt(prompt("Ingrese un número:"));
+            return numero;
+        }
+
+        function procesarNumero(numero) {
+            let numeros = [];
+            for (let i = 0; i <= numero; i++) {
+                numeros.push(i);
+            }
+            return numeros;
+        }
+
+        function imprimirNumeros(numeros) {
+            console.log("Números del 0 al " + (numeros.length - 1) + ":");
+            for (let i = 0; i < numeros.length; i++) {
+                console.log(numeros[i]);
+            }
+        }
+
+        let numeroSolicitado = solicitarNumero();
+        let numerosGenerados = procesarNumero(numeroSolicitado);
+        imprimirNumeros(numerosGenerados);
+    </script>
+</body>
+</html>

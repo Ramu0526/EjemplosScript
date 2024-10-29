@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestión de Tareas</title>
+</head>
+<body>
+    <script>
+        function solicitarTarea() {
+            let descripcion = prompt("Ingrese la descripción de la tarea:");
+            let fecha = prompt("Ingrese la fecha de vencimiento (DD/MM/YYYY):");
+            return { descripcion, fecha };
+        }
+
+        function agregarTareas() {
+            let listaTareas = "";
+            let continuar;
+
+            do {
+                let tarea = solicitarTarea();
+                listaTareas += `Tarea: ${tarea.descripcion}, Fecha de Vencimiento: ${tarea.fecha}\n`;
+                continuar = confirm("¿Desea agregar otra tarea?");
+            } while (continuar);
+
+            return listaTareas;
+        }
+
+        function mostrarTareas(tareas) {
+            if (tareas) {
+                console.log("Lista de Tareas:\n" + tareas);
+            } else {
+                console.log("No se registraron tareas.");
+            }
+        }
+
+        function iniciarGestionTareas() {
+            const tareas = agregarTareas();
+            mostrarTareas(tareas);
+        }
+
+        iniciarGestionTareas();
+    </script>
+</body>
+</html>

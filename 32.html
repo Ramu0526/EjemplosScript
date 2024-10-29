@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simulación de Ventas en una Tienda</title>
+</head>
+<body>
+    <script>
+        function registrarVentas() {
+            let ventas = [];
+            let totalVentas = 0;
+            let continuar = true;
+
+            while (continuar) {
+                let nombreProducto = prompt("Ingrese el nombre del producto:");
+                let precio = parseFloat(prompt("Ingrese el precio del producto:"));
+                let cantidad = parseInt(prompt("Ingrese la cantidad vendida:"));
+
+                if (!isNaN(precio) && precio >= 0 && !isNaN(cantidad) && cantidad > 0) {
+                    let venta = {
+                        nombre: nombreProducto,
+                        precio: precio,
+                        cantidad: cantidad,
+                        total: precio * cantidad 
+                    };
+
+                    ventas.push(venta);
+                    totalVentas += venta.total;
+                } else {
+                    console.log("Error: Precio o cantidad no válidos. Intente nuevamente.");
+                }
+
+                continuar = confirm("¿Desea registrar otra venta?");
+            }
+
+            return { ventas, totalVentas };
+        }
+
+        function imprimirResultados(ventas, totalVentas) {
+            console.log("Productos vendidos:");
+            for (let i = 0; i < ventas.length; i++) {
+                console.log(ventas[i].nombre + " - Precio: $" + ventas[i].precio + 
+                            " - Cantidad: " + ventas[i].cantidad + 
+                            " - Total: $" + ventas[i].total);
+            }
+            console.log("Total de ventas: $" + totalVentas);
+        }
+
+        let resultado = registrarVentas();
+        imprimirResultados(resultado.ventas, resultado.totalVentas);
+    </script>
+</body>
+</html>

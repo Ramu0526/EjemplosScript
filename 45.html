@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simulación de Impresora</title>
+</head>
+<body>
+    <script>
+        function solicitarCantidadPaginas() {
+            let paginas = parseInt(prompt("Ingrese la cantidad de páginas que desea imprimir:"));
+            while (isNaN(paginas) || paginas <= 0) {
+                paginas = parseInt(prompt("Error: Debe ingresar una cantidad válida y positiva de páginas. Intente nuevamente:"));
+            }
+            return paginas;
+        }
+
+        function imprimirPaginas(paginas, capacidadPapel) {
+            if (paginas <= capacidadPapel) {
+                capacidadPapel -= paginas;
+                console.log("Se han impreso " + paginas + " páginas. Papel restante: " + capacidadPapel + " páginas.");
+            } else {
+                console.log("Error: No hay suficiente papel para imprimir " + paginas + " páginas. Papel disponible: " + capacidadPapel + " páginas.");
+            }
+            return capacidadPapel;
+        }
+
+        function simularImpresora() {
+            let capacidadPapel = 50; // Capacidad inicial de papel en la impresora
+            let continuar = true;
+
+            while (continuar && capacidadPapel > 0) {
+                let paginasAImprimir = solicitarCantidadPaginas();
+                capacidadPapel = imprimirPaginas(paginasAImprimir, capacidadPapel);
+                if (capacidadPapel <= 0) {
+                    console.log("No hay más papel en la impresora.");
+                    continuar = false;
+                } else {
+                    let respuesta = prompt("¿Desea imprimir más páginas? (si/no):").toLowerCase();
+                    continuar = (respuesta === "si");
+                }
+            }
+        }
+
+        simularImpresora();
+    </script>
+</body>
+</html>

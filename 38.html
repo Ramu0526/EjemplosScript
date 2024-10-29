@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Números del 0 al Ingresado</title>
+</head>
+<body>
+    <script>
+        function solicitarNumero() {
+            let numero = parseInt(prompt("Ingrese un número entero positivo:"));
+            while (numero < 0 || isNaN(numero)) {
+                numero = parseInt(prompt("Error: Debe ingresar un número entero positivo. Intente nuevamente:"));
+            }
+            return numero;
+        }
+
+        function generarNumeros(numero) {
+            let contador = 0;
+            let numeros = [];
+            while (contador <= numero) {
+                numeros.push(contador);
+                contador++;
+            }
+            return numeros;
+        }
+
+        function imprimirNumeros(numeros) {
+            console.log("Números del 0 al ingresado: " + numeros.join(", "));
+        }
+
+        const numeroIngresado = solicitarNumero();
+        const numerosGenerados = generarNumeros(numeroIngresado);
+        imprimirNumeros(numerosGenerados);
+    </script>
+</body>
+</html>

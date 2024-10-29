@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Asistente Virtual de Cine</title>
+    </head>
+
+    <body>
+        <script>
+            function solicitarEdad() {
+                let edad = parseInt(prompt("Ingrese su edad:"));
+
+                if (isNaN(edad) || edad < 0) {
+                    console.log("Por favor, ingrese una edad válida.");
+                    return null;
+                }
+                return edad;
+            }
+
+            function recomendarPelicula(edad) {
+                let recomendacion;
+
+                switch (true) {
+                    case (edad < 7):
+                        recomendacion = "Recomendamos películas animadas y educativas aptas para todas las edades.";
+                        break;
+                    case (edad >= 7 && edad <= 17):
+                        recomendacion = "Sugerimos películas adecuadas para la familia, como animaciones, aventuras y comedias familiares.";
+                        break;
+                    case (edad >= 18 && edad <= 30):
+                        recomendacion = "Ofrecemos una variedad de géneros, como acción, drama, comedia y ciencia ficción.";
+                        break;
+                    case (edad > 31):
+                        recomendacion = "Recomendamos películas clásicas y dramas que pueden ser de su interés.";
+                        break;
+                    default:
+                        recomendacion = "No se pudo determinar una recomendación.";
+                }
+
+                return recomendacion;
+            }
+
+            function mostrarRecomendacion(recomendacion) {
+                console.log(recomendacion);
+            }
+
+            const edad = solicitarEdad();
+            if (edad !== null) {
+                const recomendacion = recomendarPelicula(edad);
+                mostrarRecomendacion(recomendacion);
+            }
+        </script>
+    </body>
+</html>

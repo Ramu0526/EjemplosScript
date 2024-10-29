@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simulación de Viaje en Coche</title>
+</head>
+<body>
+    <script>
+        function solicitarDatosViaje() {
+            let distancia = parseFloat(prompt("Ingrese la distancia total del viaje en kilómetros:"));
+            while (isNaN(distancia) || distancia <= 0) {
+                distancia = parseFloat(prompt("Error: Debe ingresar una distancia válida y positiva. Intente nuevamente:"));
+            }
+            let velocidad = parseFloat(prompt("Ingrese la velocidad promedio del coche en km/h:"));
+            while (isNaN(velocidad) || velocidad <= 0) {
+                velocidad = parseFloat(prompt("Error: Debe ingresar una velocidad válida y positiva. Intente nuevamente:"));
+            }
+            return { distancia, velocidad };
+        }
+
+        function calcularTiempoViaje(distancia, velocidad) {
+            return distancia / velocidad;
+        }
+
+        function simularViajes() {
+            let continuar = true;
+
+            while (continuar) {
+                const { distancia, velocidad } = solicitarDatosViaje();
+                const tiempoEstimado = calcularTiempoViaje(distancia, velocidad);
+                console.log("El tiempo estimado de viaje es: " + tiempoEstimado.toFixed(2) + " horas.");
+
+                let respuesta = prompt("¿Desea simular otro viaje? (si/no):").toLowerCase();
+                continuar = (respuesta === "si");
+            }
+        }
+
+        simularViajes();
+    </script>
+</body>
+</html>

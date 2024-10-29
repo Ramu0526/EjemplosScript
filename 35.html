@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agenda de Contactos</title>
+</head>
+<body>
+    <script>
+        function gestionarAgenda() {
+            let contactos = [];
+            let continuar = true;
+
+            while (continuar) {
+                let nombre = prompt("Ingrese el nombre del contacto:");
+                let telefono = prompt("Ingrese el número de teléfono del contacto:");
+
+                contactos.push({ nombre: nombre, telefono: telefono });
+
+                continuar = confirm("¿Desea agregar otro contacto?");
+            }
+
+            return contactos;
+        }
+
+        function imprimirContactos(contactos) {
+            console.log("Lista de Contactos:");
+            for (let i = 0; i < contactos.length; i++) {
+                console.log("Contacto " + (i + 1) + ": Nombre: " + contactos[i].nombre + 
+                            " - Teléfono: " + contactos[i].telefono);
+            }
+        }
+
+        let agenda = gestionarAgenda();
+        imprimirContactos(agenda);
+    </script>
+</body>
+</html>

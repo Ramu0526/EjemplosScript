@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Promedio de Dinero</title>
+    </head>
+
+    <body>
+        <script>
+            function capturarDineroJuan() {
+                let dineroJuan = parseFloat(prompt("Ingrese la cantidad de dinero que tiene Juan: "));
+                return dineroJuan;
+            }
+
+            function calcularDineroYPromedio(dineroJuan) {
+                let dineroDavid = dineroJuan / 2;
+                let dineroJose = (dineroJuan + dineroDavid) / 2;
+                let promedio = (dineroJuan + dineroDavid + dineroJose) / 3;
+                return { dineroDavid, dineroJose, promedio };
+            }
+
+            function imprimirResultado(dineroJuan, dineroDavid, dineroJose, promedio) {
+                console.log("Dinero de Juan: $" + dineroJuan.toFixed(2));
+                console.log("Dinero de David: $" + dineroDavid.toFixed(2));
+                console.log("Dinero de José: $" + dineroJose.toFixed(2));
+                console.log("Promedio de dinero entre los tres: $" + promedio.toFixed(2));
+            }
+
+            console.log("PROGRAMA DE CÁLCULO DE PROMEDIO DE DINERO");
+            let dineroJuan = capturarDineroJuan();
+            let { dineroDavid, dineroJose, promedio } = calcularDineroYPromedio(dineroJuan);
+            imprimirResultado(dineroJuan, dineroDavid, dineroJose, promedio);
+        </script>
+    </body>
+</html>

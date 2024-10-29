@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Asistente de Nutricionista - IMC</title>
+    </head>
+
+    <body>
+        <script>
+            function solicitarDatos() {
+                let peso = parseFloat(prompt("Ingrese su peso en kilogramos:"));
+                let altura = parseFloat(prompt("Ingrese su altura en metros:"));
+
+                if (peso <= 0 || altura <= 0) {
+                    console.log("El peso y la altura deben ser números positivos.");
+                    return null;
+                }
+                return { peso, altura };
+            }
+
+            function calcularIMC(datos) {
+                const imc = datos.peso / (datos.altura * datos.altura);
+                return imc;
+            }
+
+            function determinarCategoria(imc) {
+                let categoria;
+                switch (true) {
+                    case (imc < 18.5):
+                        categoria = "Bajo peso";
+                        break;
+                    case (imc < 24.9):
+                        categoria = "Peso normal";
+                        break;
+                    case (imc < 29.9):
+                        categoria = "Sobrepeso";
+                        break;
+                    case (imc >= 29.9):
+                        categoria = "Obesidad";
+                        break;
+                    default:
+                        categoria = "Categoría no válida";
+                        break;
+                }
+                return categoria;
+            }
+
+            function mostrarResultados(imc, categoria) {
+                console.log("Su IMC es:", imc.toFixed(2));
+                console.log("Categoría:", categoria);
+            }
+
+            const datos = solicitarDatos();
+            if (datos) {
+                const imc = calcularIMC(datos);
+                const categoria = determinarCategoria(imc);
+                mostrarResultados(imc, categoria);
+            }
+        </script>
+    </body>
+</html>

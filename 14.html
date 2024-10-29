@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simulación de Ascensor con Límite de Peso</title>
+    </head>
+
+    <body>
+        <script>
+            function solicitarDatos() {
+                let pesoUsuario = parseFloat(prompt("Ingrese su peso en kg:"));
+                let pisoDeseado = parseInt(prompt("Ingrese el piso al que desea ir (1-10):"));
+                return { pesoUsuario, pisoDeseado };
+            }
+
+            function verificarPeso(peso, limitePeso) {
+                if (peso <= limitePeso) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function verificarPiso(piso) {
+                let pisoMinimo = 1;
+                let pisoMaximo = 10;
+
+                if (piso >= pisoMinimo && piso <= pisoMaximo) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function moverAscensor(piso) {
+                console.log("El ascensor se está moviendo al piso " + piso);
+            }
+
+            function mostrarErrorPeso() {
+                console.log("Error: El ascensor está sobrecargado. Por favor, reduzca el peso.");
+            }
+
+            function mostrarErrorPiso() {
+                console.log("Error: El piso ingresado no es válido. Por favor, ingrese un piso entre 1 y 10.");
+            }
+
+            const limitePeso = 100; 
+
+            let datos = solicitarDatos();
+
+            if (verificarPeso(datos.pesoUsuario, limitePeso)) {
+                if (verificarPiso(datos.pisoDeseado)) {
+                    moverAscensor(datos.pisoDeseado);
+                } else {
+                    mostrarErrorPiso();
+                }
+            } else {
+                mostrarErrorPeso();
+            }
+        </script>
+    </body>
+</html>

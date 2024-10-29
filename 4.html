@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Clasificación de Número</title>
+    </head>
+
+    <body>
+        <script>
+            function capturarNumero() {
+                let numero = parseFloat(prompt("Ingrese un número: "));
+                return numero;
+            }
+
+            function clasificarNumero(numero) {
+                if (numero > 0) {
+                    return "El número es positivo.";
+                } else if (numero < 0) {
+                    return "El número es negativo.";
+                } else {
+                    return "El número es cero.";
+                }
+            }
+
+            function imprimirResultado(mensaje) {
+                console.log(mensaje);
+            }
+
+            console.log("PROGRAMA DE CLASIFICACIÓN DE NÚMEROS");
+            let numero = capturarNumero();
+            let resultado = clasificarNumero(numero);
+            imprimirResultado("El número ingresado es: " + numero);
+            imprimirResultado(resultado);
+        </script>
+    </body>
+</html>

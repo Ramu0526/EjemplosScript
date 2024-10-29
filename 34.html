@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tienda Virtual - Carrito de Compras</title>
+</head>
+<body>
+    <script>
+        function realizarCompras() {
+            let carrito = [];
+            let totalCompra = 0;
+            let continuar = true; 
+
+            while (continuar) {
+                let nombreProducto = prompt("Ingrese el nombre del producto:");
+                let precio = parseFloat(prompt("Ingrese el precio del producto:"));
+
+                if (!isNaN(precio) && precio >= 0) {
+                    carrito.push({ nombre: nombreProducto, precio: precio });
+                    totalCompra += precio; 
+                } else {
+                    console.log("Error: El precio ingresado no es válido. Intente nuevamente.");
+                }
+
+                continuar = confirm("¿Desea agregar otro producto?");
+            }
+
+            return { carrito, totalCompra };
+        }
+
+        function imprimirResumen(compra) {
+            console.log("Productos en el carrito:");
+            for (let i = 0; i < compra.carrito.length; i++) {
+                console.log(compra.carrito[i].nombre + " - Precio: $" + compra.carrito[i].precio);
+            }
+            console.log("Total de la compra: $" + compra.totalCompra);
+        }
+
+        let compraRealizada = realizarCompras();
+        imprimirResumen(compraRealizada);
+    </script>
+</body>
+</html>

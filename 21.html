@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Compra de Productos</title>
+    </head>
+
+    <body>
+        <script>
+            function solicitarDatos() {
+                const tipoProducto = prompt("Ingrese el tipo de producto (A: Alimentos, V: Vestimenta, E: Electrónicos):").toUpperCase();
+                let cantidad = parseInt(prompt("Ingrese la cantidad de unidades:"));
+
+                if (cantidad <= 0) {
+                    console.log("La cantidad de unidades debe ser un número positivo.");
+                    return null;
+                }
+                return { tipoProducto, cantidad };
+            }
+
+            function calcularCosto(datos) {
+                let precioBase;
+                let descuento = 0;
+
+                switch (datos.tipoProducto) {
+                    case 'A':
+                        precioBase = 100;
+                        descuento = 0.10; 
+                        break;
+                    case 'V':
+                        precioBase = 50; 
+                        descuento = 0.05;
+                        break;
+                    case 'E':
+                        precioBase = 200;
+                        break;
+                    default:
+                        console.log("Tipo de producto no válido.");
+                        return null;
+                }
+
+                const costoSinDescuento = precioBase * datos.cantidad;
+                const costoConDescuento = costoSinDescuento * (1 - descuento);
+                return { costoSinDescuento, costoConDescuento };
+            }
+
+            function mostrarResultados(costo) {
+                if (!costo) return;
+
+                console.log("Costo sin descuento:", costo.costoSinDescuento);
+                console.log("Costo con descuento:", costo.costoConDescuento);
+            }
+
+            const datos = solicitarDatos();
+            if (datos) {
+                const costo = calcularCosto(datos);
+                mostrarResultados(costo);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Biblioteca</title>
+</head>
+<body>
+    <script>
+        function solicitarInformacionLibro() {
+            let titulo = prompt("Ingrese el título del libro:");
+            let autor = prompt("Ingrese el autor del libro:");
+            let paginas = parseInt(prompt("Ingrese el número de páginas del libro:"));
+            return { titulo, autor, paginas };
+        }
+
+        function registrarLibros() {
+            let listaLibros = "";
+            let continuar;
+
+            do {
+                let libro = solicitarInformacionLibro();
+                listaLibros += `Título: ${libro.titulo}, Autor: ${libro.autor}, Páginas: ${libro.paginas}\n`;
+                continuar = confirm("¿Desea registrar otro libro?");
+            } while (continuar);
+
+            return listaLibros;
+        }
+
+        function mostrarListaLibros(listaLibros) {
+            if (listaLibros) {
+                console.log("Lista de libros registrados:\n" + listaLibros);
+            } else {
+                console.log("No se registró ningún libro.");
+            }
+        }
+
+        function iniciarRegistro() {
+            const librosRegistrados = registrarLibros();
+            mostrarListaLibros(librosRegistrados);
+        }
+
+        iniciarRegistro();
+    </script>
+</body>
+</html>

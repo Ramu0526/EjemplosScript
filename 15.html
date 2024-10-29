@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simulación de Sensor de Temperatura</title>
+    </head>
+
+    <body>
+        <script>
+            function solicitarTemperatura() {
+                let temperaturaActual = parseFloat(prompt("Ingrese la temperatura actual en °C:"));
+                return temperaturaActual;
+            }
+
+            function verificarTemperatura(temperatura) {
+                let temperaturaMinima = 18;
+                let temperaturaMaxima = 25;
+
+                if (temperatura >= temperaturaMinima && temperatura <= temperaturaMaxima) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function mostrarMensajeAdecuado() {
+                console.log("La temperatura es adecuada.");
+            }
+
+            function mostrarMensajeFueraDeRango() {
+                console.log("La temperatura está fuera del rango deseado.");
+            }
+
+            let temperaturaActual = solicitarTemperatura();
+
+            if (verificarTemperatura(temperaturaActual)) {
+                mostrarMensajeAdecuado();
+            } else {
+                mostrarMensajeFueraDeRango();
+            }
+        </script>
+    </body>
+</html>

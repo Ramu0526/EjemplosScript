@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Menú de Restaurante</title>
+    </head>
+    <body>
+        <script>
+            const menu = {
+                platos: {
+                    "1": { nombre: "Pizza", precio: 10 },
+                    "2": { nombre: "Hamburguesa", precio: 8 },
+                    "3": { nombre: "Ensalada", precio: 5 }
+                },
+                bebidas: {
+                    "1": { nombre: "Agua", precio: 2 },
+                    "2": { nombre: "Refresco", precio: 3 },
+                    "3": { nombre: "Cerveza", precio: 4 }
+                }
+            };
+
+            function seleccionarPlatos() {
+                let platosSeleccionados = [];
+                let continuar = true;
+
+                while (continuar) {
+                    console.log("Menú de Platos:");
+                    for (let key in menu.platos) {
+                        console.log(`${key}. ${menu.platos[key].nombre} - $${menu.platos[key].precio}`);
+                    }
+
+                    let seleccionPlato = prompt("Seleccione un plato (número) o escriba 'fin' para terminar:");
+                    if (seleccionPlato === 'fin') {
+                        continuar = false;
+                    } else if (menu.platos[seleccionPlato]) {
+                        platosSeleccionados.push(menu.platos[seleccionPlato]);
+                        console.log(`${menu.platos[seleccionPlato].nombre} ha sido añadido.`);
+                    } else {
+                        console.log("Selección de plato no válida.");
+                    }
+                }
+
+                return platosSeleccionados;
+            }
+
+            function seleccionarBebidas() {
+                let bebidasSeleccionadas = [];
+                let continuar = true;
+
+                while (continuar) {
+                    console.log("Menú de Bebidas:");
+                    for (let key in menu.bebidas) {
+                        console.log(`${key}. ${menu.bebidas[key].nombre} - $${menu.bebidas[key].precio}`);
+                    }
+
+                    let seleccionBebida = prompt("Seleccione una bebida (número) o escriba 'fin' para terminar:");
+                    if (seleccionBebida === 'fin') {
+                        continuar = false;
+                    } else if (menu.bebidas[seleccionBebida]) {
+                        bebidasSeleccionadas.push(menu.bebidas[seleccionBebida]);
+                        console.log(`${menu.bebidas[seleccionBebida].nombre} ha sido añadido.`);
+                    } else {
+                        console.log("Selección de bebida no válida.");
+                    }
+                }
+
+                return bebidasSeleccionadas;
+            }
+
+            function calcularCostoTotal(platos, bebidas) {
+                let total = 0;
+                platos.forEach(plato => {
+                    total += plato.precio;
+                });
+                bebidas.forEach(bebida => {
+                    total += bebida.precio;
+                });
+                return total;
+            }
+
+            function aplicarDescuento(total) {
+                let metodoPago = prompt("Ingrese el método de pago (efectivo, tarjeta de crédito, cheque):").toLowerCase();
+                let descuento = 0;
+
+                switch (metodoPago) {
+                    case "efectivo":
+                        descuento = total * 0.1;
+                        break;
+                    case "tarjeta de crédito":
+                        descuento = total * 0.05;
+                    case "cheque":
+                        descuento = total * 0.03;
+                        break;
+                    default:
+                        console.log("Método de pago no válido. No se aplicará descuento.");
+                }
+
+                let totalConDescuento = total - descuento;
+                return totalConDescuento;
+            }
+
+            let platosSeleccionados = seleccionarPlatos();
+            let bebidasSeleccionadas = seleccionarBebidas();
+
+            let costoTotal = calcularCostoTotal(platosSeleccionados, bebidasSeleccionadas);
+            console.log(`El costo total antes de descuentos es: $${costoTotal.toFixed(2)}`);
+
+            let costoFinal = aplicarDescuento(costoTotal);
+            console.log(`El costo total después de descuentos es: $${costoFinal.toFixed(2)}`);
+        </script>
+    </body>
+</html>

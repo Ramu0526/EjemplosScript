@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Clasificación de Calificación</title>
+    </head>
+
+    <body>
+        <script>
+            function solicitarCalificacion() {
+                let calificacion = parseInt(prompt("Ingrese una calificación numérica del 0 al 100:"));
+                return calificacion;
+            }
+
+            function determinarRango(calificacion) {
+                let rango;
+                switch (true) {
+                    case (calificacion >= 90 && calificacion <= 100):
+                        rango = "A";
+                        break;
+                    case (calificacion >= 80 && calificacion < 90):
+                        rango = "B";
+                        break;
+                    case (calificacion >= 70 && calificacion < 80):
+                        rango = "C";
+                        break;
+                    case (calificacion >= 60 && calificacion < 70):
+                        rango = "D";
+                        break;
+                    case (calificacion >= 0 && calificacion < 60):
+                        rango = "F";
+                        break;
+                    default:
+                        rango = "Calificación no válida";
+                        break;
+                }
+                return rango;
+            }
+
+            function mostrarRango(rango) {
+                console.log("La calificación corresponde a:", rango);
+            }
+
+            const calificacion = solicitarCalificacion();
+            const rango = determinarRango(calificacion);
+            mostrarRango(rango);
+        </script>
+    </body>
+</html>

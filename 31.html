@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sumar Números Ingresados por el Usuario</title>
+</head>
+<body>
+    <script>
+        function solicitarNumeros() {
+            let suma = 0;
+            let continuar = true;
+
+            while (continuar) {
+                let input = prompt("Ingrese un número (o 'salir' para terminar):");
+                
+                if (input.toLowerCase() === 'salir') {
+                    continuar = false;
+                } else {
+                    let numero = parseFloat(input);
+                    
+                    if (!isNaN(numero)) {
+                        suma += numero;
+                    } else {
+                        console.log("Error: Debe ingresar un número válido.");
+                    }
+                }
+            }
+            return suma;
+        }
+
+        function imprimirResultado(suma) {
+            console.log("La suma total de los números ingresados es: " + suma);
+        }
+
+        let sumaTotal = solicitarNumeros();
+        imprimirResultado(sumaTotal);
+    </script>
+</body>
+</html>

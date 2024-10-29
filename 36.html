@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Suma de Números Pares e Impares</title>
+</head>
+<body>
+    <script>
+        function solicitarNumero() {
+            let numero = parseInt(prompt("Ingrese un número entero positivo:"));
+            while (numero <= 0 || isNaN(numero)) {
+                numero = parseInt(prompt("Error: Debe ingresar un número entero positivo. Intente nuevamente:"));
+            }
+            return numero; 
+        }
+
+        function procesarSumas(numero) {
+            let sumaPares = 0; 
+            let sumaImpares = 0; 
+            let contador = 1;
+
+            while (contador <= numero) {
+                if (contador % 2 === 0) {
+                    sumaPares += contador;
+                } else {
+                    sumaImpares += contador;
+                }
+                contador++;
+            }
+
+            return { sumaPares, sumaImpares };
+        }
+
+        function imprimirResultados(sumas, numero) {
+            console.log("Suma de números pares desde 1 hasta " + numero + ": " + sumas.sumaPares);
+            console.log("Suma de números impares desde 1 hasta " + numero + ": " + sumas.sumaImpares);
+        }
+
+        const numeroIngresado = solicitarNumero(); 
+        const sumasCalculadas = procesarSumas(numeroIngresado);
+        imprimirResultados(sumasCalculadas, numeroIngresado);
+    </script>
+</body>
+</html>

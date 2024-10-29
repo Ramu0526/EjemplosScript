@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cuenta Regresiva</title>
+</head>
+<body>
+    <script>
+        function solicitarNumero() {
+            let numero = parseInt(prompt("Ingrese un número entero positivo para la cuenta regresiva:"));
+            while (isNaN(numero) || numero <= 0) {
+                numero = parseInt(prompt("Error: Debe ingresar un número entero positivo. Intente nuevamente:"));
+            }
+            return numero;
+        }
+
+        function cuentaRegresiva(numero) {
+            while (numero >= 0) {
+                console.log(numero);
+                numero--;
+            }
+        }
+
+        function iniciarCuentaRegresiva() {
+            const numeroInicio = solicitarNumero();
+            cuentaRegresiva(numeroInicio);
+            console.log("¡Ramu lo cumpliste!");
+        }
+
+        iniciarCuentaRegresiva();
+    </script>
+</body>
+</html>

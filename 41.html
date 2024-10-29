@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Años Cumplidos</title>
+</head>
+<body>
+    <script>
+        function solicitarEdad() {
+            let edad = parseInt(prompt("Ingrese su edad:"));
+            while (edad <= 0 || isNaN(edad)) {
+                edad = parseInt(prompt("Error: Debe ingresar una edad válida. Intente nuevamente:"));
+            }
+            return edad;
+        }
+
+        function generarAniosCumplidos(edad) {
+            let anios = [];
+            let contador = 1;
+            while (contador <= edad) {
+                anios.push(contador);
+                contador++;
+            }
+            return anios;
+        }
+
+        function imprimirAnios(anios) {
+            console.log("Años cumplidos: " + anios.join(", "));
+        }
+
+        const edadIngresada = solicitarEdad();
+        const aniosCumplidos = generarAniosCumplidos(edadIngresada);
+        imprimirAnios(aniosCumplidos);
+    </script>
+</body>
+</html>

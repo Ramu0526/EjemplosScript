@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cajero Automático</title>
+</head>
+<body>
+    <script>
+        function solicitarMontoRetiro() {
+            let monto = parseFloat(prompt("Ingrese el monto que desea retirar:"));
+            while (isNaN(monto) || monto <= 0) {
+                monto = parseFloat(prompt("Error: Debe ingresar un monto válido y positivo. Intente nuevamente:"));
+            }
+            return monto;
+        }
+
+        function verificarSaldo(monto, saldo) {
+            return monto <= saldo;
+        }
+
+        function calcularSaldoRestante(saldo, monto) {
+            return saldo - monto;
+        }
+
+        const saldoInicial = 10000;
+        let saldoDisponible = saldoInicial;
+
+        const montoRetirar = solicitarMontoRetiro();
+
+        if (verificarSaldo(montoRetirar, saldoDisponible)) {
+            saldoDisponible = calcularSaldoRestante(saldoDisponible, montoRetirar);
+            console.log("Retiro exitoso. Saldo restante: " + saldoDisponible);
+        } else {
+            console.log("Error: El monto solicitado excede el saldo disponible.");
+        }
+    </script>
+</body>
+</html>

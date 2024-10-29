@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Juego de Adivinanza</title>
+</head>
+<body>
+    <script>
+        function generarNumeroAleatorio() {
+            return Math.floor(Math.random() * 100) + 1;
+        }
+
+        function solicitarAdivinanza() {
+            let adivinanza = parseInt(prompt("Adivina el número entre 1 y 100:"));
+            while (isNaN(adivinanza) || adivinanza < 1 || adivinanza > 100) {
+                adivinanza = parseInt(prompt("Error: Debe ingresar un número entre 1 y 100. Intente nuevamente:"));
+            }
+            return adivinanza;
+        }
+
+        function jugarAdivinanza() {
+            const numeroSecreto = generarNumeroAleatorio();
+            let acerto = false;
+
+            while (!acerto) {
+                const adivinanza = solicitarAdivinanza();
+
+                if (adivinanza === numeroSecreto) {
+                    console.log("¡Felicidades! Adivinaste el número: " + numeroSecreto);
+                    acerto = true;
+                } else if (adivinanza < numeroSecreto) {
+                    console.log("El número es mayor. Intenta de nuevo.");
+                } else {
+                    console.log("El número es menor. Intenta de nuevo.");
+                }
+            }
+        }
+
+        jugarAdivinanza();
+    </script>
+</body>
+</html>

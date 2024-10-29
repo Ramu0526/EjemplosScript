@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Clasificación de Calificación</title>
+    </head>
+
+    <body>
+        <script>
+            function capturarCalificacion() {
+                let calificacion = parseFloat(prompt("Ingrese la calificación del estudiante (1-100): "));
+                return calificacion;
+            }
+
+            function clasificarCalificacion(calificacion) {
+                if (calificacion >= 90 && calificacion <= 100) {
+                    return "A";
+                } else if (calificacion >= 80 && calificacion < 90) {
+                    return "B";
+                } else if (calificacion >= 70 && calificacion < 80) {
+                    return "C";
+                } else if (calificacion >= 60 && calificacion < 70) {
+                    return "D";
+                } else if (calificacion >= 1 && calificacion < 60) {
+                    return "F";
+                } else {
+                    return "Calificación fuera de rango";
+                }
+            }
+
+            function imprimirResultado(mensaje) {
+                console.log(mensaje);
+            }
+
+            console.log("PROGRAMA DE CLASIFICACIÓN DE CALIFICACIÓN");
+            let calificacion = capturarCalificacion();
+            let resultado = clasificarCalificacion(calificacion);
+            imprimirResultado("La calificación del estudiante es: " + calificacion);
+            imprimirResultado("Clasificación: " + resultado);
+        </script>
+    </body>
+</html>
